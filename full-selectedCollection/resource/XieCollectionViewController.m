@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) XieBottomView *bottomView;                    // 编辑模式下底部操作视图
 
+@property (nonatomic, strong) UIView *noDataView;                           // 没有数据时的展示图
+
 @property (nonatomic, strong) UIBarButtonItem *rightEditItem;               // 右上角编辑按钮
 
 
@@ -93,6 +95,8 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     
     [self loadEditingBottomView];
     
+    [self loadNoDataView];
+    
 }
 
 - (void)customNavigationUI {
@@ -142,6 +146,24 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     [self.view addSubview:_bottomView];
 }
 
+- (void)loadNoDataView
+{
+    self.noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    self.noDataView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *label  = [[UILabel alloc] init];
+    label.frame = CGRectMake(self.view.bounds.size.width/2-100, 200, 200, 30);
+    label.font = [UIFont systemFontOfSize:20];
+    label.text = @"没有数据";
+    label.textColor = [UIColor orangeColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.noDataView addSubview:label];
+    
+    [self.view addSubview:self.noDataView];
+    
+    self.noDataView.hidden = YES;
+
+}
 
 
 
@@ -263,17 +285,39 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     
     int i = 0;
     
+    NSMutableArray *deleteData = [NSMutableArray array];
+    
     for (NSDictionary *dic in _cellDataArray) {
         
         if ([dic[@"selected"] intValue])
         {
             i++;
+            
+            [deleteData addObject:dic];
         }
     }
     
     if (i != 0) {
-        self.dialogSign = @"delete";
         
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认删除选中项么？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            // 执行删除操作
+            [_cellDataArray removeObjectsInArray:deleteData];
+            
+            [self refreshCellData];
+            
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [alert addAction:cancelAction];
+        
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
         
     }
     
@@ -294,6 +338,25 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
         }
     }
     
+    if (i != 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认删除选中项么？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            // 执行保存操作
+            
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [alert addAction:cancelAction];
+        
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
     
     
 }
@@ -306,12 +369,12 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
 {
     [self.collectionView reloadData];
     if (self.cellDataArray.count == 0) {
-        self.noCookbookView.hidden = NO;
+        self.noDataView.hidden = NO;
         self.navigationItem.rightBarButtonItem = nil;
     }
     else
     {
-        self.noCookbookView.hidden = YES;
+        self.noDataView.hidden = YES;
         self.navigationItem.rightBarButtonItem = self.rightEditItem;
     }
 }
@@ -346,74 +409,6 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     
 }
 
-
-
-
-
-#pragma mark DialogDelegate
-- (void)doSomething {
-    
-    NSMutableArray *selectedData = [NSMutableArray array];
-    
-    NSMutableArray *selectedCookbook = [NSMutableArray array];
-    
-    for (NSDictionary *item in self.cellDataArray) {
-        
-        if ([item[@"selected"] intValue]) {
-            
-            [selectedData addObject:item];
-            
-            [selectedCookbook addObject:item[@"cookbook"]];
-            
-        }
-        
-    }
-    
-    if ([self.dialogSign isEqualToString:@"delete"]) {
-        
-        
-       
-        
-        [self.cellDataArray removeObjectsInArray:selectedData];
-        
-        
-        
-        //        [self.collectionView reloadData];
-        [self refreshCellData];
-    }
-    else if([self.dialogSign isEqualToString:@"save"])
-    {
-        
-    }
-    
-}
-
-- (void)dismiss {
-    
-}
-
-- (void)customDialogTitleWithLabel:(UILabel *)label {
-    
-    label.text = @"提醒";
-    
-}
-
-- (void)customDialogMsgLabel:(UILabel *)label {
-    
-    if ([self.dialogSign isEqualToString:@"delete"]) {
-        
-        label.text = @"您是否要删除所选食谱";
-        label.textAlignment = NSTextAlignmentCenter;
-    }
-    else if([self.dialogSign isEqualToString:@"save"])
-    {
-        
-        label.text = [NSString stringWithFormat:@"您确定保存为网络菜单吗？"];
-        label.textAlignment = NSTextAlignmentCenter;
-    }
-    
-    
-}
 
 
 @end
