@@ -15,7 +15,7 @@
 #define ScreenHeight        [UIScreen mainScreen].bounds.size.height
 
 
-@interface XieCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface XieCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIAlertViewDelegate>
 
 
 @property (nonatomic, strong) UICollectionView *collectionView;             // 主体 collectionView  视图
@@ -289,39 +289,18 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     
     int i = 0;
     
-    NSMutableArray *deleteData = [NSMutableArray array];
-    
     for (NSDictionary *dic in _cellDataArray) {
         
         if ([dic[@"selected"] intValue])
         {
             i++;
-            
-            [deleteData addObject:dic];
         }
     }
     
     if (i != 0) {
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认删除选中项么？" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            // 执行删除操作
-            [_cellDataArray removeObjectsInArray:deleteData];
-            
-            [self refreshCellData];
-            
-        }];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        
-        [alert addAction:cancelAction];
-        
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认删除选中项么？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alertView show];
         
     }
     
@@ -343,22 +322,9 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     }
     
     if (i != 0) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认删除选中项么？" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            // 执行保存操作
-            
-        }];
+        //执行保存的操作。。 此处暂未写事件
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        
-        [alert addAction:cancelAction];
-        
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:nil];
     }
     
     
@@ -413,6 +379,26 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     
 }
 
-
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    NSMutableArray *deleteData = [NSMutableArray array];
+    
+    for (NSDictionary *dic in _cellDataArray) {
+        
+        if ([dic[@"selected"] intValue])
+        {
+            [deleteData addObject:dic];
+        }
+    }
+    
+    if (buttonIndex == 1) {
+        // 执行删除操作
+        [_cellDataArray removeObjectsInArray:deleteData];
+        
+        [self refreshCellData];
+    }
+}
 
 @end
