@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD590E341C8E798600EB4627 /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD590E331C8E798600EB4627 /* ShowViewController.m */; };
 		DD6E5D341C83EF2900AE6DDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E5D331C83EF2900AE6DDE /* main.m */; };
 		DD6E5D371C83EF2900AE6DDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E5D361C83EF2900AE6DDE /* AppDelegate.m */; };
 		DD6E5D3A1C83EF2900AE6DDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E5D391C83EF2900AE6DDE /* ViewController.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD590E321C8E798600EB4627 /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowViewController.h; sourceTree = "<group>"; };
+		DD590E331C8E798600EB4627 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
 		DD6E5D2F1C83EF2900AE6DDE /* full-selectedCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "full-selectedCollection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6E5D331C83EF2900AE6DDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD6E5D351C83EF2900AE6DDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				DD6E5D361C83EF2900AE6DDE /* AppDelegate.m */,
 				DD6E5D381C83EF2900AE6DDE /* ViewController.h */,
 				DD6E5D391C83EF2900AE6DDE /* ViewController.m */,
+				DD590E321C8E798600EB4627 /* ShowViewController.h */,
+				DD590E331C8E798600EB4627 /* ShowViewController.m */,
 				DD6E5D3B1C83EF2900AE6DDE /* Main.storyboard */,
 				DD6E5D3E1C83EF2900AE6DDE /* Assets.xcassets */,
 				DD6E5D401C83EF2900AE6DDE /* LaunchScreen.storyboard */,
@@ -296,6 +301,7 @@
 				DD6E5D3A1C83EF2900AE6DDE /* ViewController.m in Sources */,
 				DD6E5D6E1C83F46B00AE6DDE /* XieBottomView.m in Sources */,
 				DD6E5D6B1C83F41A00AE6DDE /* XieCollectionViewController.m in Sources */,
+				DD590E341C8E798600EB4627 /* ShowViewController.m in Sources */,
 				DD6E5D371C83EF2900AE6DDE /* AppDelegate.m in Sources */,
 				DD6E5D341C83EF2900AE6DDE /* main.m in Sources */,
 				DDB371861C87E43C00C5B651 /* XieCollectionViewCell.m in Sources */,

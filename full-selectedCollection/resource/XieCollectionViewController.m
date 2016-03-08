@@ -9,7 +9,7 @@
 #import "XieCollectionViewController.h"
 #import "XieBottomView.h"
 #import "XieCollectionViewCell.h"
-
+#import "ShowViewController.h"
 
 #define ScreenWidth         [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight        [UIScreen mainScreen].bounds.size.height
@@ -269,9 +269,13 @@ static NSString *managerCellIdentifier = @"cookbookManagerViewCell";
     else{
         
         //非编辑模式
-        
         NSLog(@"点击cell 执行事件");
         
+        ShowViewController *showVC = [[ShowViewController alloc] init];
+        
+        showVC.text = item[@"data"];
+        
+        [self.navigationController pushViewController:showVC animated:YES];
     }
     
     [self refreshCellData];
