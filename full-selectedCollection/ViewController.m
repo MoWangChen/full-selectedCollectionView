@@ -29,7 +29,33 @@
     [self.view addSubview:button];
     
     
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"要死就111111哎呀呀";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:15];
+    label.frame = CGRectMake(0, 200, self.view.bounds.size.width, 50);
+    [self changeLabel:label textColor:[UIColor redColor]];
+    [self.view addSubview:label];
+}
+
+// 将字符串中的数字 变成红色
+- (void)changeLabel:(UILabel *)label textColor:(UIColor *)color
+{
+    NSString *string = label.text;
     
+    NSCharacterSet* nonDigits =[[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    
+    NSInteger remainSecond =[[string stringByTrimmingCharactersInSet:nonDigits] intValue];
+    
+    NSString *rangeStr = [NSString stringWithFormat:@"%ld",remainSecond];
+    
+    NSRange range = [string rangeOfString:rangeStr];
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:label.text];
+    
+    [attrString addAttribute:NSForegroundColorAttributeName value:color range:range];
+    
+    label.attributedText = attrString;
 }
 
 - (void)clickToNextVC
