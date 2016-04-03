@@ -29,6 +29,10 @@
     [self.view addSubview:button];
     
     
+    
+    
+    
+    
     UILabel *label = [[UILabel alloc] init];
     label.text = @"要死就111111哎呀呀";
     label.textAlignment = NSTextAlignmentCenter;
