@@ -34,7 +34,7 @@
     
     
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"要死就1111111哎呀呀";
+    label.text = @"要死就11111x11哎呀呀";
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:15];
     label.frame = CGRectMake(0, 200, self.view.bounds.size.width, 50);
