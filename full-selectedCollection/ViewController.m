@@ -32,9 +32,9 @@
     
     
     
-    
+    // 新建分支
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"要死就111111哎呀呀";
+    label.text = @"要死就111111哎呀呀---branch";
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:15];
     label.frame = CGRectMake(0, 200, self.view.bounds.size.width, 50);
