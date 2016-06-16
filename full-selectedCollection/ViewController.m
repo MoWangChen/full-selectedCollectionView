@@ -31,11 +31,11 @@
     
     
     
-<<<<<<< Updated upstream
+
     
     // 新建分支
-=======
->>>>>>> Stashed changes
+
+
     UILabel *label = [[UILabel alloc] init];
     label.text = @"要死就111111哎呀呀---branch";
     label.textAlignment = NSTextAlignmentCenter;
