@@ -19,6 +19,7 @@
 		DD6E5D6B1C83F41A00AE6DDE /* XieCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E5D6A1C83F41A00AE6DDE /* XieCollectionViewController.m */; };
 		DD6E5D6E1C83F46B00AE6DDE /* XieBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6E5D6D1C83F46B00AE6DDE /* XieBottomView.m */; };
 		DDB371861C87E43C00C5B651 /* XieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB371851C87E43C00C5B651 /* XieCollectionViewCell.m */; };
+		DDE78DC41D0054E5003A590F /* UICollectionView+fullSelected.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE78DC31D0054E5003A590F /* UICollectionView+fullSelected.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		DD6E5D6D1C83F46B00AE6DDE /* XieBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XieBottomView.m; sourceTree = "<group>"; };
 		DDB371841C87E43C00C5B651 /* XieCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XieCollectionViewCell.h; sourceTree = "<group>"; };
 		DDB371851C87E43C00C5B651 /* XieCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XieCollectionViewCell.m; sourceTree = "<group>"; };
+		DDE78DC21D0054E5003A590F /* UICollectionView+fullSelected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+fullSelected.h"; sourceTree = "<group>"; };
+		DDE78DC31D0054E5003A590F /* UICollectionView+fullSelected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+fullSelected.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				DD6E5D6D1C83F46B00AE6DDE /* XieBottomView.m */,
 				DDB371841C87E43C00C5B651 /* XieCollectionViewCell.h */,
 				DDB371851C87E43C00C5B651 /* XieCollectionViewCell.m */,
+				DDE78DC21D0054E5003A590F /* UICollectionView+fullSelected.h */,
+				DDE78DC31D0054E5003A590F /* UICollectionView+fullSelected.m */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				DD590E341C8E798600EB4627 /* ShowViewController.m in Sources */,
 				DD6E5D371C83EF2900AE6DDE /* AppDelegate.m in Sources */,
 				DD6E5D341C83EF2900AE6DDE /* main.m in Sources */,
+				DDE78DC41D0054E5003A590F /* UICollectionView+fullSelected.m in Sources */,
 				DDB371861C87E43C00C5B651 /* XieCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
