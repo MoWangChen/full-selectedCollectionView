@@ -22,7 +22,7 @@ pod "MXSelectedCollectionView"
 
 ## Author
 
-xiepengxiang, xiepengxiang@365ime.com
+xiepengxiang, xiepengxiang93@sina.com
 
 ## License
 
